@@ -1,0 +1,166 @@
+root":{1 item
+"json":{5 items
+"id":string"be9ca0c5fa9f49859ea126777d830029"
+"status":{2 items
+"code":int10000
+"description":string"Ok"
+}
+"created_at":string"2023-04-30T21:31:46.785024993Z"
+"model":{15 items
+"id":string"general-image-recognition"
+"name":string"Image Recognition"
+"created_at":string"2016-03-09T17:11:39.608845Z"
+"modified_at":string"2022-11-21T17:42:01.083795Z"
+"app_id":string"main"
+"model_version":{7 items
+"id":string"aa7f35c01e0642fda5cf400f543e7c40"
+"created_at":string"2018-03-06T21:10:24.454834Z"
+"status":{2 items
+"code":int21100
+"description":string"Model is trained and ready"
+}
+"visibility":{1 item
+"gettable":int50
+}
+"app_id":string"main"
+"user_id":string"clarifai"
+"metadata":{}0 items
+}
+"user_id":string"clarifai"
+"model_type_id":string"visual-classifier"
+"visibility":{1 item
+"gettable":int50
+}
+"toolkits":[]0 items
+"use_cases":[]0 items
+"languages":[]0 items
+"languages_full":[]0 items
+"check_consents":[]0 items
+"workflow_recommended":boolfalse
+}
+"data":{1 item
+"concepts":[20 items
+0:{4 items
+"id":string"ai_5WW7fH4K"
+"name":string"race"
+"value":float0.99794954
+"app_id":string"main"
+}
+1:{4 items
+"id":string"ai_971KsJkn"
+"name":string"track"
+"value":float0.99463105
+"app_id":string"main"
+}
+2:{4 items
+"id":string"ai_LplXDDZ2"
+"name":string"car"
+"value":float0.9926005
+"app_id":string"main"
+}
+3:{4 items
+"id":string"ai_2D3NBTV7"
+"name":string"championship"
+"value":float0.99241513
+"app_id":string"main"
+}
+4:{4 items
+"id":string"ai_dSCKh8xv"
+"name":string"fast"
+"value":float0.9865057
+"app_id":string"main"
+}
+5:{4 items
+"id":string"ai_vhsC45ZR"
+"name":string"circuit"
+"value":float0.98550385
+"app_id":string"main"
+}
+6:{4 items
+"id":string"ai_bBXFkGB1"
+"name":string"auto racing"
+"value":float0.98493654
+"app_id":string"main"
+}
+7:{4 items
+"id":string"ai_9WFnldtB"
+"name":string"hurry"
+"value":float0.9784225
+"app_id":string"main"
+}
+8:{4 items
+"id":string"ai_7WNVdPhm"
+"name":string"competition"
+"value":float0.96203166
+"app_id":string"main"
+}
+9:{4 items
+"id":string"ai_lrTHSPdB"
+"name":string"action"
+"value":float0.9591546
+"app_id":string"main"
+}
+10:{4 items
+"id":string"ai_1Q53NvNw"
+"name":string"driver"
+"value":float0.94763917
+"app_id":string"main"
+}
+11:{4 items
+"id":string"ai_K2d5Ps8r"
+"name":string"automotive"
+"value":float0.93400663
+"app_id":string"main"
+}
+12:{4 items
+"id":string"ai_xh4vNZQL"
+"name":string"power"
+"value":float0.92960155
+"app_id":string"main"
+}
+13:{4 items
+"id":string"ai_hsG8bzf6"
+"name":string"drive"
+"value":float0.92381144
+"app_id":string"main"
+}
+14:{4 items
+"id":string"ai_TsSR8Rx5"
+"name":string"tire"
+"value":float0.9158018
+"app_id":string"main"
+}
+15:{4 items
+"id":string"ai_WTrlNkqM"
+"name":string"vehicle"
+"value":float0.9103754
+"app_id":string"main"
+}
+16:{4 items
+"id":string"ai_KP2bZ7kZ"
+"name":string"circle"
+"value":float0.89960706
+"app_id":string"main"
+}
+17:{4 items
+"id":string"ai_T08wvP9R"
+"name":string"racer"
+"value":float0.893787
+"app_id":string"main"
+}
+18:{4 items
+"id":string"ai_H5kcrCBK"
+"name":string"drift"
+"value":float0.8496579
+"app_id":string"main"
+}
+19:{4 items
+"id":string"ai_Xxjc3MhT"
+"name":string"transportation system"
+"value":float0.8301615
+"app_id":string"main"
+}
+]
+}
+}
+}

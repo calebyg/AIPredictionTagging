@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hypermind-Tech</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <style>
+      /* Add your desired styles here */
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Hypermind-Tech</h1>
+    </header>
+
+    <main>
+      <section id="upload">
+        <h2>Upload Images</h2>
+        <p>Share your images with us!</p>
+        <form
+          id="uploadForm"
+          action="/upload"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <label for="file">Select Image:</label>
+          <input
+            type="file"
+            id="file"
+            name="image"
+            multiple
+            accept=".png,.jpg"
+          />
+          <br />
+          <button type="submit">Upload</button>
+        </form>
+        <div id="uploadMessage"></div>
+      </section>
+
+      <section id="download">
+        <h2>Download Images</h2>
+        <p>Browse and download available images.</p>
+      </section>
+      <form id="searchForm">
+        <label for="keywords">Enter Keywords:</label>
+        <input
+          type="text"
+          id="keywords"
+          name="keywords"
+          pattern="[A-Za-z0-9]+"
+          title="Only numbers and letters are allowed."
+        />
+        <button type="submit">Search</button>
+      </form>
+      <div id="photoGallery" class="photo-container"></div>
+    </main>
+
+    <footer></footer>
+    <!-- <script>
+      const uploadForm = document.getElementById("upload");
+      const uploadMessage = document.getElementById("uploadMessage");
+      const imageList = document.getElementById("imageList");
+
+      uploadForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        console.log(`Hello`);
+
+        // Handle form submission here (requires server-side integration)
+        // You can use AJAX or fetch API to send the image data to your server
+        // and update the uploadMessage or imageList based on the response
+
+        uploadMessage.textContent = "Uploading image...";
+
+        // Simulate successful upload after 2 seconds
+        setTimeout(() => {
+          uploadMessage.textContent = "Upload successful!";
+          const newImage = document.createElement("li");
+          const imageLink = document.createElement("a");
+          imageLink.href = "#"; // Replace with actual image URL
+          imageLink.textContent = "Downloaded image";
+          newImage.appendChild(imageLink);
+          imageList.appendChild(newImage);
+        }, 2000);
+      });
+    </script> -->
+    <script src="frontend.js"></script>
+  </body>
+</html>
