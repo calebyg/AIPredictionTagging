@@ -60,6 +60,11 @@ app.use("/bull-board", serverAdapter.getRouter());
 import cors from "cors";
 app.use(cors());
 
+// Logging the rejected field from multer error
+app.use((error, req, res, next) => {
+  console.log("This is the rejected field ->", error.field);
+});
+
 const PORT = process.env.PORT || 3000;
 
 // Define storage settings for multer
@@ -80,14 +85,14 @@ const upload = multer({
 });
 
 // Define route handler for handling file uploads
-// Define route to handle image upload
-app.post("/upload", upload.single("file"), async (req, res) => {
+// maxCount: 20 is the maximum number of files allowed to be upload.
+app.post("/upload", upload.array("files", 20), async (req, res) => {
   try {
-    // Retrieve the uploaded file from the request
-    const imageFile = req.file;
+    // Retrieve the uploaded array of files from the request
+    const imageFiles = req.files;
 
-    if (!imageFile) {
-      return res.status(400).json({ error: "No file uploaded" });
+    if (!imageFiles) {
+      return res.status(400).json({ error: "No files uploaded" });
     }
 
     // Add file to BullMQ worker
@@ -104,9 +109,14 @@ app.post("/upload", upload.single("file"), async (req, res) => {
       return;
     }
 
-    // Add the file to the queue
-    imageProcessingQueue.add(jobID, { imageFile: imageFile });
-    console.log(`Successfully added ${imageFile.originalname} to the queue!`);
+    // Add each file to the queue
+    for (let i = 0; i < imageFiles.length; i++) {
+      const file = imageFiles[i];
+      console.log("File received:", file.originalname);
+      // Here you can process each file as needed
+      imageProcessingQueue.add(jobID, { imageFile: file });
+      console.log(`Successfully added ${file.originalname} to the queue!`);
+    }
 
     // Send a response indicating successful upload
     res.status(200).json({ message: "Image uploaded successfully" });

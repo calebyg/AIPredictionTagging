@@ -18,7 +18,7 @@
       <section id="upload">
         <h2>Upload Images</h2>
         <p>Share your images with us!</p>
-        <form
+        <!-- <form
           id="uploadForm"
           action="/upload"
           method="post"
@@ -34,7 +34,24 @@
           />
           <br />
           <button type="submit">Upload</button>
-        </form>
+        </form> -->
+        <form
+        id="uploadForm"
+        action="/upload"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <label for="file">Select Image:</label>
+        <input
+          type="file"
+          id="file"
+          name="files"
+          multiple
+          accept=".png,.jpg"
+        />
+        <br />
+        <button type="submit">Upload</button>
+      </form>
         <div id="uploadMessage"></div>
       </section>
 
