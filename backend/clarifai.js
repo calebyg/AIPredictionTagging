@@ -1,31 +1,19 @@
 /* UUID */
 import { v4 as uuidv4 } from "uuid"; // Random number generator
 
-/* Express */
+require('dotenv').config();
 import express from "express";
 const app = express();
 
-/* File processing */
 import fs from "fs";
 import path from "path";
-const directoryPath = "E:/BlendedTech/images/Atlanta";
-const LOCATION_NAME = "Test"; // Location tag added to metadata
 
-/* Clarifai */
 import { ClarifaiStub } from "clarifai-nodejs-grpc";
 import { grpc } from "clarifai-nodejs-grpc";
 const stub = ClarifaiStub.grpc();
-const USER_ID = "5inpx1s32r82";
-const APP_ID = "blended-tech";
 
-/* MongoDB */
 import { MongoClient } from "mongodb";
 
-// Connection URI
-const uri =
-  "mongodb+srv://Computeh:WKiFWSyBuyrHEoqR@obscurum-photos.rlazqj2.mongodb.net/";
-
-/* BullMQ */
 import { Queue } from "bullmq";
 import { Worker } from "bullmq";
 import { QueueEvents } from "bullmq";
@@ -34,9 +22,9 @@ import { QueueEvents } from "bullmq";
 const imageProcessingQueue = new Queue("imageProcessing", {
   connection: {
     // Redis connection options
-    host: "redis-12845.c285.us-west-2-2.ec2.cloud.redislabs.com",
+    host: process.env.REDIS_HOST,
     port: 12845,
-    password: "d3o4KosdX02NzMYZxWGLzTygFwiZ5LsO",
+    password: process.env.REDIS_PASSWORD,
   },
 });
 
@@ -132,7 +120,7 @@ app.get("/search", async (req, res) => {
   let client;
   try {
     // Connect to MongoDB
-    client = new MongoClient(uri);
+    client = new MongoClient(process.env.MONGO_URL);
     await client.connect();
 
     // Get reference to database and collection
@@ -197,7 +185,7 @@ const worker = new Worker(
     let client;
     try {
       // Connect to the MongoDB cluster
-      client = new MongoClient(uri);
+      client = new MongoClient(process.env.MONGO_URL);
       await client.connect();
 
       const database = client.db("Obscurum-Photos");
@@ -228,9 +216,9 @@ const worker = new Worker(
   {
     connection: {
       // Redis connection options
-      host: "redis-12845.c285.us-west-2-2.ec2.cloud.redislabs.com",
+      host: process.env.REDIS_HOST,
       port: 12845,
-      password: "d3o4KosdX02NzMYZxWGLzTygFwiZ5LsO",
+      password: process.env.REDIS_PASSWORD,
     },
     removeOnFail: { count: 0 },
     concurrency: 10,
@@ -253,9 +241,9 @@ const worker = new Worker(
 const queueEvents = new QueueEvents("imageProcessing", {
   connection: {
     // Redis connection options
-    host: "redis-12845.c285.us-west-2-2.ec2.cloud.redislabs.com",
+    host: process.env.REDIS_HOST,
     port: 12845,
-    password: "d3o4KosdX02NzMYZxWGLzTygFwiZ5LsO",
+    password: process.env.REDIS_PASSWORD,
   },
 });
 
@@ -359,8 +347,8 @@ const generateClarifaiTags = async (image, model) => {
     stub.PostModelOutputs(
       {
         user_app_id: {
-          user_id: USER_ID,
-          app_id: APP_ID,
+          user_id: process.env.CLARIFAI_USER_ID,
+          app_id: CLARIFAI_APP_ID,
         },
         inputs: [
           { data: { image: { base64: imageBytes.toString("base64") } } },
