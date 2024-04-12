@@ -23,7 +23,7 @@ const imageProcessingQueue = new Queue("imageProcessing", {
   connection: {
     // Redis connection options
     host: process.env.REDIS_HOST,
-    port: 12845,
+    port: process.env.REDIS_PORT,
     password: process.env.REDIS_PASSWORD,
   },
 });
@@ -217,7 +217,7 @@ const worker = new Worker(
     connection: {
       // Redis connection options
       host: process.env.REDIS_HOST,
-      port: 12845,
+      port: process.env.REDIS_PORT,
       password: process.env.REDIS_PASSWORD,
     },
     removeOnFail: { count: 0 },
@@ -242,7 +242,7 @@ const queueEvents = new QueueEvents("imageProcessing", {
   connection: {
     // Redis connection options
     host: process.env.REDIS_HOST,
-    port: 12845,
+    port: process.env.REDIS_PORT,
     password: process.env.REDIS_PASSWORD,
   },
 });
